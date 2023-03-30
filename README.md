@@ -13,22 +13,25 @@ react
 Selenium WebDriver
 Google Chrome
 
-# Installation
+## Installation
 Clone the repository:
 
 ``` bash
 
 git clone https://github.com/<username>/linkedin-scraper.git```
+```
+## Install the dependencies:
 
-#Install the dependencies:
+To install the required dependencies, run the following command:
 
 
 ```bash
-cd linkedin-scraper
-npm install
+npm install selenium csv-writer express csv-parser react react-dom react-scripts bootstrap
 ```
+This will install all the required dependencies for the project.
+This assumes that you are using npm as your package manager. If you are using a different package manager, you will need to adjust the instructions accordingly.
 
-# Usage:
+## Usage:
 Start the server:
 
 ```bash
@@ -46,5 +49,5 @@ Enter the URL of the LinkedIn profile you want to scrape and click the "Extract 
 
 Wait for the data to be scraped and displayed on the page.
 
-# License:
+## License:
 This project is licensed under the MIT License. See LICENSE.md for more details.
