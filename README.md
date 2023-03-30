@@ -37,7 +37,7 @@ Start the server:
 ```bash
 npm start
 ```
-On a different termnal window:
+On a different terminal window:
 
 ```bash
 node server.js
