@@ -1,33 +1,22 @@
 const express = require('express');
-const { spawn } = require('child_process');
-const csv = require('csv-parser');
-const fs = require('fs');
+const cors = require('cors');
+const scrapeProfile = require('./scraper');
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 
-app.post('/scrape', (req, res) => {
-  const url = req.body.url;
-  const pythonProcess = spawn('python', ['scrapingprofile.py', url]);
-
-  pythonProcess.on('close', (code) => {
-    if (code !== 0) {
-      res.status(500).send('Error occurred while scraping profile.');
-    } else {
-      const data = [];
-      fs.createReadStream('output.csv')
-        .pipe(csv())
-        .on('data', (row) => {
-          data.push(row);
-        })
-        .on('end', () => {
-          res.json(data);
-        });
-    }
-  });
+app.get('/scrape', async (req, res) => {
+  try {
+    const url = req.query.url;
+    const data = await scrapeProfile(url);
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
 });
 
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
+app.listen(3001, () => {
+  console.log('Server is running on port 3001');
 });
