@@ -1,0 +1,8 @@
+selenium==3.141.0
+csv-writer==3.1.17
+express==4.17.1
+csv-parser==3.0.0
+react==17.0.2
+react-dom==17.0.2
+react-scripts==4.0.3
+bootstrap@5.1.0
